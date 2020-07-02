@@ -1,4 +1,14 @@
 $(function () {
+    // 初始化头像预览区域
+    $.ajax({
+        url: '/my/userinfo',
+        success: function (res) {
+            // console.log(res);
+            $('#image').cropper('destroy')
+                .attr('src', res.data.user_pic)
+                .cropper(options)
+        }
+    })
     let layer = layui.layer
     // 1.1 获取裁剪区域的 DOM 元素
     var $image = $('#image')
